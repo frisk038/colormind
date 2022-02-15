@@ -20,7 +20,6 @@ export default {
   props: ['gameArr'],
   methods : {
     getImages(color) {
-      console.log(color)
       switch (color) {
         case 'white':
           const whiteUrl = new URL('../assets/white-circle.svg', import.meta.url)

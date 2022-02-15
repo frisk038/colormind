@@ -9,16 +9,30 @@ import Keyboard from './components/Keyboard.vue';
     <Header></Header>
   </header>
   <main>
-    <ColorBoard :curColor="curColor" :gameArr="gameArr"></ColorBoard>
-    <Keyboard @guessed="toto"></Keyboard>
+    <h1 v-if="won">Bravo</h1>
+    <ColorBoard :gameArr="gameArr"></ColorBoard>
+    <Keyboard @guessed="updateGameArr"></Keyboard>
   </main>
 </template>
 
 <script>
+function getSecret() {
+  var colors = ['black', 'green', 'brown', 'yellow', 'orange', 'purple']
+  return [colors[Math.floor(Math.random() * colors.length)],
+          colors[Math.floor(Math.random() * colors.length)],
+          colors[Math.floor(Math.random() * colors.length)],
+          colors[Math.floor(Math.random() * colors.length)]]
+}
+
+function arrayEquals(a, b) {
+  return a.every((val, index) => val === b[index]);
+}
+
 export default {
   data() {
     return {
-      curColor: 'grey',
+      won : false,
+      secret : [],
       curRow: 0,
       curCell: 0,
       gameArr: [['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
@@ -27,14 +41,21 @@ export default {
     }
   },
   methods : {
-    toto(curColor) {
-      this.curColor = curColor;
+    updateGameArr(curColor) {
       this.gameArr[this.curRow][this.curCell] = curColor
       this.curCell = (this.curCell + 1) % 4
       if (this.curCell == 0) {
+        if (arrayEquals(this.gameArr[this.curRow], this.secret)) {
+          this.won = true;
+        }
+
         this.curRow = (this.curRow + 1) % 12
       }
     }
+  },
+  created(){
+      this.secret = getSecret()
+      console.log(this.secret)
   },
 }
 </script>
