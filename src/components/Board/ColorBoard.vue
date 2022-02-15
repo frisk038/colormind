@@ -1,6 +1,5 @@
 <script setup>
 import ColorRow from './ColorRow.vue'
-import WhiteImg from '../assets/white-circle.svg'
 </script>
 
 <template>
