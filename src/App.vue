@@ -14,7 +14,7 @@ import Keyboard from './components/Keyboard.vue';
     <br>
     <span>Vert : Couleur bien placé</span>
     <ColorBoard :gameArr="gameArr" :checkArr="checkArr"></ColorBoard>
-    <Keyboard @guessed="updateGameArr" @clear="clearRow"></Keyboard>
+    <Keyboard @guessed="updateGameArr" @clear="clearRow" @check="checkRow"></Keyboard>
   </main>
 </template>
 
@@ -60,13 +60,8 @@ export default {
   methods : {
     updateGameArr(curColor) {
       this.gameArr[this.curRow][this.curCell] = curColor
-      this.curCell = (this.curCell + 1) % 4
-      if (this.curCell == 0) {
-        if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
-          this.won = true;
-        }
-
-        this.curRow = (this.curRow + 1) % 12
+      if (this.curCell < 3) {
+         this.curCell++
       }
     },
     clearRow() {
@@ -74,6 +69,18 @@ export default {
         this.gameArr[this.curRow][index] = 'white';
       }
       this.curCell = 0
+    },
+    checkRow() {
+      if (this.curCell == 3) {
+        if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
+          this.won = true;
+        }
+        if (this.curRow < 11) {
+          this.curRow++
+          this.curCell = 0
+        }
+        
+      }
     }
   },
   created(){

@@ -1,4 +1,5 @@
 <template>
+      <button class="check" @click="$emit('check')" />
       <button class="black"  @click="$emit('guessed', 'black')" />
       <button class="green"  @click="$emit('guessed', 'green')" />
       <button class="brown"  @click="$emit('guessed', 'brown')" />
@@ -10,7 +11,7 @@
 
 <script>
 export default {
-    emits: ['guessed', 'clear']
+    emits: ['guessed', 'clear', 'check']
 }
 </script>
 
