@@ -38,7 +38,8 @@ function check(gameArr, checkArr, secretArr) {
       won++
     } 
   }
-  return won == 3
+  console.log(won)
+  return won == 4
 }
 
 export default {
