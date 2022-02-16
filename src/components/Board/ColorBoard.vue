@@ -1,7 +1,7 @@
 <template>
   <table >
       <tr v-for="(row, idx1) in gameArr" :key="row">
-        <td v-for="(col, idx2) in row" :key="col">
+        <td v-for="(col, idx2) in row" :key="col+idx2">
           <img :src=getImages(gameArr[idx1][idx2]) :style="{backgroundColor: checkArr[idx1][idx2] }" />
         </td>
       </tr>
