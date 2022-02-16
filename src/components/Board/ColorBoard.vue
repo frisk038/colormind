@@ -1,7 +1,3 @@
-<script setup>
-  import ColorRow from './ColorRow.vue'
-</script>
-
 <template>
   <table >
       <tr v-for="(row, idx1) in gameArr" :key="row">
@@ -14,7 +10,7 @@
 
 <script>
 export default {
-  components: { ColorRow },
+  components: { },
   props: ['gameArr', 'checkArr'],
   methods : {
     getImages(color) {
