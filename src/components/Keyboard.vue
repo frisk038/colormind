@@ -3,7 +3,7 @@
       <button class="green"  @click="$emit('guessed', 'green')" />
       <button class="brown"  @click="$emit('guessed', 'brown')" />
       <button class="yellow" @click="$emit('guessed', 'yellow')" />
-      <button class="orange" @click="$emit('guessed', 'orange')" />
+      <button class="red" @click="$emit('guessed', 'red')" />
       <button class="purple" @click="$emit('guessed', 'purple')" />
 </template>
 
@@ -18,9 +18,6 @@ export default {
     background: url('./assets/black-circle.svg') no-repeat;
     width:50px;height:50px;
 }
-.black:active {
-  border-style: inset;
-}
 .green {
     background: url('./assets/green-circle.svg') no-repeat;
     width:50px;height:50px;
@@ -33,8 +30,8 @@ export default {
     background: url('./assets/yellow-circle.svg') no-repeat;
     width:50px;height:50px;
 }
-.orange {
-    background: url('./assets/orange-circle.svg') no-repeat;
+.red {
+    background: url('./assets/red-circle.svg') no-repeat;
     width:50px;height:50px;
 }
 .purple {

@@ -1,23 +1,21 @@
 <script setup>
-import ColorRow from './ColorRow.vue'
+  import ColorRow from './ColorRow.vue'
 </script>
 
 <template>
   <table >
-    <tbody>
       <tr v-for="(row, idx1) in gameArr" :key="row">
         <td v-for="(col, idx2) in row" :key="col">
-          <img :src=getImages(gameArr[idx1][idx2]) />
+          <img :src=getImages(gameArr[idx1][idx2]) :style="{backgroundColor: checkArr[idx1][idx2] }" />
         </td>
       </tr>
-    </tbody>
   </table>
 </template>
 
 <script>
 export default {
   components: { ColorRow },
-  props: ['gameArr'],
+  props: ['gameArr', 'checkArr'],
   methods : {
     getImages(color) {
       switch (color) {
@@ -36,8 +34,8 @@ export default {
         case 'yellow':
           const yellowUrl = new URL('../assets/yellow-circle.svg', import.meta.url)
           return yellowUrl 
-        case 'orange':
-          const orangeUrl = new URL('../assets/orange-circle.svg', import.meta.url)
+        case 'red':
+          const orangeUrl = new URL('../assets/red-circle.svg', import.meta.url)
           return orangeUrl 
         case 'purple':
           const purpleUrl = new URL('../assets/purple-circle.svg', import.meta.url)
@@ -51,9 +49,8 @@ export default {
 <style scoped>
 td {
 background-color: lightgray;
-width: 20px;
-height: 20px;
-text-align: center;
+width: 25px;
+height: 25px;
 }
 
 </style>
