@@ -1,15 +1,31 @@
 <template>
     <table class="color">
-        <td><button class="black" @click="$emit('guessed', 'black')" /></td>
-        <td><button class="green" @click="$emit('guessed', 'green')" /></td>
-        <td><button class="brown" @click="$emit('guessed', 'brown')" /></td>
-        <td><button class="yellow" @click="$emit('guessed', 'yellow')" /></td>
-        <td><button class="red" @click="$emit('guessed', 'red')" /></td>
-        <td><button class="purple" @click="$emit('guessed', 'purple')" /></td>
+        <td>
+            <button class="black" @click="$emit('guessed', 'black')" />
+        </td>
+        <td>
+            <button class="green" @click="$emit('guessed', 'green')" />
+        </td>
+        <td>
+            <button class="brown" @click="$emit('guessed', 'brown')" />
+        </td>
+        <td>
+            <button class="yellow" @click="$emit('guessed', 'yellow')" />
+        </td>
+        <td>
+            <button class="red" @click="$emit('guessed', 'red')" />
+        </td>
+        <td>
+            <button class="purple" @click="$emit('guessed', 'purple')" />
+        </td>
     </table>
     <table class="system">
-        <td><button class="clear" @click="$emit('clear')" /></td>
-        <td><button class="check" @click="$emit('check')" /></td>
+        <td>
+            <button class="clear" @click="$emit('clear')" />
+        </td>
+        <td>
+            <button class="check" @click="$emit('check')" />
+        </td>
     </table>
 </template>
 
@@ -27,7 +43,7 @@ export default {
     height: 50px;
 }
 .green {
-    background: url("./assets/bambou/green.png") no-repeat;
+    background: url("./assets/bambou/green2.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
@@ -69,13 +85,13 @@ export default {
     height: 50px;
 }
 .color {
-    width: 100%; 
-    margin: 0 auto; 
+    width: 100%;
+    margin: 0 auto;
     text-align: center;
 }
 .system {
-    width: 70%; 
-    margin: 0 auto; 
+    width: 70%;
+    margin: 0 auto;
     text-align: center;
 }
 </style>
