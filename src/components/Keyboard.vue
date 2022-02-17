@@ -1,12 +1,16 @@
 <template>
-      <button class="check" @click="$emit('check')" />
-      <button class="black"  @click="$emit('guessed', 'black')" />
-      <button class="green"  @click="$emit('guessed', 'green')" />
-      <button class="brown"  @click="$emit('guessed', 'brown')" />
-      <button class="yellow" @click="$emit('guessed', 'yellow')" />
-      <button class="red" @click="$emit('guessed', 'red')" />
-      <button class="purple" @click="$emit('guessed', 'purple')" />
-      <button class="clear" @click="$emit('clear')" />
+    <table class="color">
+        <td><button class="black" @click="$emit('guessed', 'black')" /></td>
+        <td><button class="green" @click="$emit('guessed', 'green')" /></td>
+        <td><button class="brown" @click="$emit('guessed', 'brown')" /></td>
+        <td><button class="yellow" @click="$emit('guessed', 'yellow')" /></td>
+        <td><button class="red" @click="$emit('guessed', 'red')" /></td>
+        <td><button class="purple" @click="$emit('guessed', 'purple')" /></td>
+    </table>
+    <table class="system">
+        <td><button class="clear" @click="$emit('clear')" /></td>
+        <td><button class="check" @click="$emit('check')" /></td>
+    </table>
 </template>
 
 <script>
@@ -15,29 +19,63 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .black {
-    background: url('./assets/black-circle.svg') no-repeat;
-    width:50px;height:50px;
+    background: url("./assets/bambou/black.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
 }
 .green {
-    background: url('./assets/green-circle.svg') no-repeat;
-    width:50px;height:50px;
+    background: url("./assets/bambou/green.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
 }
 .brown {
-    background: url('./assets/brown-circle.svg') no-repeat;
-    width:50px;height:50px;
+    background: url("./assets/bambou/brown.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
 }
 .yellow {
-    background: url('./assets/yellow-circle.svg') no-repeat;
-    width:50px;height:50px;
+    background: url("./assets/bambou/yellow.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
 }
 .red {
-    background: url('./assets/red-circle.svg') no-repeat;
-    width:50px;height:50px;
+    background: url("./assets/bambou/red.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
 }
 .purple {
-    background: url('./assets/purple-circle.svg') no-repeat;
-    width:50px;height:50px;
+    background: url("./assets/bambou/purple.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.check {
+    background: url("./assets/check.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.clear {
+    background: url("./assets/cancel.png") no-repeat;
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+}
+.color {
+    width: 100%; 
+    margin: 0 auto; 
+    text-align: center;
+}
+.system {
+    width: 70%; 
+    margin: 0 auto; 
+    text-align: center;
 }
 </style>

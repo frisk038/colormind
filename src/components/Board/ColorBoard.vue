@@ -1,18 +1,21 @@
 <template>
-  <table >
-      <tr v-for="(row, idx1) in gameArr" :key="row">
-        <td v-for="(col, idx2) in row" :key="col+idx2">
-          <img :src=getImages(gameArr[idx1][idx2]) :style="{backgroundColor: checkArr[idx1][idx2] }" />
-        </td>
-      </tr>
+  <table class="board">
+    <tr v-for="(row, idx1) in gameArr" :key="row">
+      <td v-for="(col, idx2) in row" :key="col + idx2">
+        <img
+          :src="getImages(gameArr[idx1][idx2])"
+          :style="{ backgroundColor: checkArr[idx1][idx2] }"
+        />
+      </td>
+    </tr>
   </table>
 </template>
 
 <script>
 export default {
-  components: { },
+  components: {},
   props: ['gameArr', 'checkArr'],
-  methods : {
+  methods: {
     getImages(color) {
       switch (color) {
         case 'white':
@@ -29,13 +32,13 @@ export default {
           return brownUrl
         case 'yellow':
           const yellowUrl = new URL('../assets/yellow-circle.svg', import.meta.url)
-          return yellowUrl 
+          return yellowUrl
         case 'red':
           const orangeUrl = new URL('../assets/red-circle.svg', import.meta.url)
-          return orangeUrl 
+          return orangeUrl
         case 'purple':
           const purpleUrl = new URL('../assets/purple-circle.svg', import.meta.url)
-          return purpleUrl 
+          return purpleUrl
       }
     }
   }
@@ -44,9 +47,14 @@ export default {
 
 <style scoped>
 td {
-background-color: lightgray;
-width: 25px;
-height: 25px;
+  width: 45px;
+  height: 45px;
+  margin: 0 auto;
+  text-align: center;
 }
 
+.board {
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

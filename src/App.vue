@@ -11,9 +11,6 @@ import Keyboard from './components/Keyboard.vue';
   <main>
     <h1 v-if="gameState == 1">Bravo</h1>
     <h1 v-if="gameState == -1">Dommage</h1>
-    <span>Orange : Couleur mal placé</span>
-    <br>
-    <span>Vert : Couleur bien placé</span>
     <ColorBoard :gameArr="gameArr" :checkArr="checkArr"></ColorBoard>
     <Keyboard @guessed="updateGameArr" @clear="clearRow" @check="checkRow"></Keyboard>
   </main>
@@ -50,19 +47,16 @@ export default {
       curRow: 0,
       curCell: 0,
       gameArr: [['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
-               ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
-              ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
+               ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
       checkArr: [['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
-               ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
-              ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
-      
+               ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
     }
   },
   methods : {
     updateGameArr(curColor) {
-      this.gameArr[this.curRow][this.curCell] = curColor
-      if (this.curCell < 3) {
-         this.curCell++
+      if (this.curCell < 4) {
+        this.gameArr[this.curRow][this.curCell] = curColor
+        this.curCell++
       }
     },
     clearRow() {
@@ -72,12 +66,12 @@ export default {
       this.curCell = 0
     },
     checkRow() {
-      if (this.curCell == 3) {
+      if (this.curCell == 4) {
         if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
           this.gameState = 1;
           return
         }
-        if (this.curRow < 11) {
+        if (this.curRow < 8) {
           this.curRow++
           this.curCell = 0
         }
