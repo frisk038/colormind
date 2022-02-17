@@ -1,6 +1,8 @@
 <template>
-<img src="../assets/panda.png" class="logo"> 
-<span>Bamboo Color</span>
+    <div class="headLogo">
+        <img src="../assets/panda.png" class="logo" />
+        <h2 class="bambooTitle">Bamboo Color</h2>
+    </div>
 </template>
 
 <script>
@@ -11,7 +13,15 @@ export default {
 
 <style>
 .logo {
-    background-size:cover;
-    width:50px;height:50px;
+    width: 30%;
+}
+.headLogo {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    color: aliceblue;
 }
 </style>
