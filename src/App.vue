@@ -9,7 +9,8 @@ import Keyboard from './components/Keyboard.vue';
     <Header></Header>
   </header>
   <main>
-    <h1 v-if="won">Bravo</h1>
+    <h1 v-if="gameState == 1">Bravo</h1>
+    <h1 v-if="gameState == -1">Dommage</h1>
     <span>Orange : Couleur mal placé</span>
     <br>
     <span>Vert : Couleur bien placé</span>
@@ -44,7 +45,7 @@ function check(gameArr, checkArr, secretArr) {
 export default {
   data() {
     return {
-      won : false,
+      gameState : 0,
       secret : [],
       curRow: 0,
       curCell: 0,
@@ -73,13 +74,16 @@ export default {
     checkRow() {
       if (this.curCell == 3) {
         if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
-          this.won = true;
+          this.gameState = 1;
+          return
         }
         if (this.curRow < 11) {
           this.curRow++
           this.curCell = 0
         }
-        
+        else {
+          this.gameState = -1
+        }   
       }
     }
   },
