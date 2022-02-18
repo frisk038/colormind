@@ -27,17 +27,6 @@
     </div>
 </template>
 
-// SUTOM #42 -/6
-
-// 🟥🟦🟡🟡🟡🟦🟦🟦
-// 🟥🟦🟡🟡🟡🟦🟦🟦
-// 🟥🟦🟡🟡🟡🟦🟦🟦
-// 🟥🟡🟦🟦🟦🟦🟡🟦
-// 🟥🟡🟦🟦🟦🟦🟡🟦
-// 🟥🟡🟦🟦🟦🟦🟡🟦
-
-// https://sutom.nocle.fr
-
 <script>
 export default {
     props: ['gameResume', 'curRow', 'gameState', 'secret'],
@@ -58,7 +47,7 @@ export default {
                 }
                 text += '\n'
             }
-            text += '\nhttps://friskycolormind.netlify.app'
+            text += '\nhttps://bambo-color.netlify.app'
             console.log(text)
         }
     },

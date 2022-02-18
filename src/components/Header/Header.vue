@@ -13,7 +13,7 @@ export default {
 
 <style>
 .logo {
-    width: 5em;
+    width: 4em;
 }
 .headLogo {
     width: 80%;
