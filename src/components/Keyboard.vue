@@ -93,12 +93,12 @@ export default {
     border-radius: 10px;
 }
 .color {
-    width: 100%;
+    width: 23em;
     margin: 0 auto;
     text-align: center;
 }
 .system {
-    width: 70%;
+    width: 15em;
     margin: 0 auto;
     text-align: center;
 }
