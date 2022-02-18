@@ -41,48 +41,56 @@ export default {
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .green {
     background: url("./assets/bambou/green2.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .brown {
     background: url("./assets/bambou/brown.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .yellow {
     background: url("./assets/bambou/yellow.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .red {
     background: url("./assets/bambou/red.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .purple {
     background: url("./assets/bambou/purple.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .check {
     background: url("./assets/check.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .clear {
     background: url("./assets/cancel.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
+    border-radius: 10px;
 }
 .color {
     width: 100%;

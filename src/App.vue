@@ -2,15 +2,15 @@
 import ColorBoard from './components/Board/ColorBoard.vue';
 import Header from './components/Header/Header.vue';
 import Keyboard from './components/Keyboard.vue';
+import WinPopup from './components/WinPopup.vue'
 </script>
 
 <template>
   <header>
     <Header></Header>
+    <WinPopup v-if="gameState != 0" :gameResume="gameResume" :gameState="gameState"></WinPopup>
   </header>
   <main>
-    <h1 v-if="gameState == 1">Bravo</h1>
-    <h1 v-if="gameState == -1">Dommage</h1>
     <ColorBoard :gameArr="gameArr" :checkArr="checkArr"></ColorBoard>
     <Keyboard @guessed="updateGameArr" @clear="clearRow" @check="checkRow"></Keyboard>
   </main>
@@ -20,9 +20,9 @@ import Keyboard from './components/Keyboard.vue';
 function getSecret() {
   var colors = ['black', 'green', 'brown', 'yellow', 'red', 'purple']
   return [colors[Math.floor(Math.random() * colors.length)],
-          colors[Math.floor(Math.random() * colors.length)],
-          colors[Math.floor(Math.random() * colors.length)],
-          colors[Math.floor(Math.random() * colors.length)]]
+  colors[Math.floor(Math.random() * colors.length)],
+  colors[Math.floor(Math.random() * colors.length)],
+  colors[Math.floor(Math.random() * colors.length)]]
 }
 
 function check(gameArr, checkArr, secretArr) {
@@ -34,7 +34,7 @@ function check(gameArr, checkArr, secretArr) {
     if (gameArr[index] == secretArr[index]) {
       checkArr[index] = "green"
       won++
-    } 
+    }
   }
   return won == 4
 }
@@ -42,19 +42,21 @@ function check(gameArr, checkArr, secretArr) {
 export default {
   data() {
     return {
-      gameState : 0,
-      secret : [],
+      gameState: 0,
+      secret: [],
       curRow: 0,
       curCell: 0,
+      isPopupVisible: false,
       gameArr: [['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
-               ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
+      ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
       checkArr: [['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'],
-               ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
+      ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white'], ['white', 'white', 'white', 'white']],
+      gameResume: [],
     }
   },
-  methods : {
+  methods: {
     updateGameArr(curColor) {
-      if (this.curCell < 4) {
+      if (this.curCell < 4 && this.gameState == 0) {
         this.gameArr[this.curRow][this.curCell] = curColor
         this.curCell++
       }
@@ -66,24 +68,51 @@ export default {
       this.curCell = 0
     },
     checkRow() {
-      if (this.curCell == 4) {
+      if (this.curCell == 4 && this.gameState == 0) {
         if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
           this.gameState = 1;
+          this.computeClipBoard()
+          this.showPopup()
           return
         }
-        if (this.curRow < 8) {
+        if (this.curRow < 7) {
           this.curRow++
           this.curCell = 0
         }
         else {
           this.gameState = -1
-        }   
+          this.computeClipBoard()
+          this.showPopup()
+        }
+      }
+    },
+    showPopup() {
+      this.isPopupVisible = true;
+    },
+    computeClipBoard() {
+      for (let irow = 0; irow <= this.curRow; irow++) {
+        var row = []
+        for (let icell = 0; icell < this.checkArr[irow].length; icell++) {
+          const element = this.checkArr[irow][icell];
+          switch (element) {
+            case 'orange':
+              row.push('🟠')
+              break;
+            case 'green':
+              row.push('🟢')
+              break;
+            case 'white':
+              row.push('⚪️')
+            default:
+              break;
+          }
+        }
+        this.gameResume.push(row)
       }
     }
   },
-  created(){
-      this.secret = getSecret()
-      console.log(this.secret)
+  created() {
+    this.secret = getSecret()
   },
 }
 </script>

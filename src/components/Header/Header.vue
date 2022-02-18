@@ -1,6 +1,6 @@
 <template>
     <div class="headLogo">
-        <img src="../assets/panda.png" class="logo" />
+        <img src="../assets/panda1.png" class="logo" />
         <h2 class="bambooTitle">Bamboo Color</h2>
     </div>
 </template>
@@ -13,7 +13,7 @@ export default {
 
 <style>
 .logo {
-    width: 30%;
+    width: 10em;
 }
 .headLogo {
     width: 80%;
