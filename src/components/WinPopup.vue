@@ -83,7 +83,7 @@ export default {
 
 .modal-body {
     position: relative;
-    padding: 50px 10px;
+    padding: 20px 5px;
     color: #ffffff;
 }
 
