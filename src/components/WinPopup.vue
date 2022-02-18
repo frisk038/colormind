@@ -12,7 +12,7 @@
                 </div>
 
                 <div class="share">
-                    <button v-on:click="toClipboard">Partage ta partie</button>
+                    <button v-on:click="generateClipboard">Partage ta partie</button>
                     <table class="shareTab">
                         <tr v-for="(row, idx1) in gameResume" :key="row">
                             <td
@@ -38,7 +38,7 @@ export default {
         close() {
             this.$emit('close');
         },
-        toClipboard() {
+        generateClipboard() {
             var text = "Bamboo Color\n\n"
             for (let iRow = 0; iRow < this.gameResume.length; iRow++) {
                 const row = this.gameResume[iRow];
@@ -48,7 +48,16 @@ export default {
                 text += '\n'
             }
             text += '\nhttps://bambo-color.netlify.app'
+            this.copyToClipboard(text)
             console.log(text)
+        },
+        async copyToClipboard(mytext) {
+            try {
+                await navigator.clipboard.writeText(mytext);
+                alert('Copied');
+            } catch ($e) {
+                alert('Cannot copy');
+            }
         }
     },
 };

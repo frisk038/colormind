@@ -109,7 +109,7 @@ export default {
         }
         this.gameResume.push(row)
       }
-    }
+    },
   },
   created() {
     this.secret = getSecret()
