@@ -93,7 +93,7 @@ export default {
     border-radius: 10px;
 }
 .color {
-    width: 23em;
+    width: 22em;
     margin: 0 auto;
     text-align: center;
 }
