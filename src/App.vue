@@ -69,6 +69,7 @@ export default {
       this.curCell = 0
     },
     checkRow() {
+      console.log(this.secret)
       if (this.curCell == 4 && this.gameState == 0) {
         if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
           this.gameState = 1;
