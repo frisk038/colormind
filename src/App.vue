@@ -113,11 +113,11 @@ export default {
       }
     },
   },
-  async beforeMount() {
+  async created() {
     try {
       let response = await fetch("https://bamboocolor.herokuapp.com/combination");
-      console.log("response=", response);
       var combiJs = await response.json();
+      console.log("response=", response);
       var combiObj = JSON.parse(combiJs);
       this.secret = combiObj.combi
     } catch (error) {
