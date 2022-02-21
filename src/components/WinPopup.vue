@@ -53,9 +53,9 @@ export default {
         async copyToClipboard(mytext) {
             try {
                 await navigator.clipboard.writeText(mytext);
-                alert('Copied');
+                alert("C'est copié");
             } catch ($e) {
-                alert('Cannot copy');
+                alert('Oups y a une erreur');
             }
         }
     },
