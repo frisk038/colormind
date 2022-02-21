@@ -14,7 +14,6 @@ import WinPopup from './components/WinPopup.vue'
     <ColorBoard :gameArr="gameArr" :checkArr="checkArr"></ColorBoard>
     <Keyboard @guessed="updateGameArr" @clear="clearRow" @check="checkRow"></Keyboard>
   </main>
-  {{ secret }}
 </template>
 
 <script>
@@ -69,7 +68,6 @@ export default {
       this.curCell = 0
     },
     checkRow() {
-      console.log(this.secret)
       if (this.curCell == 4 && this.gameState == 0) {
         if (check(this.gameArr[this.curRow], this.checkArr[this.curRow], this.secret)) {
           this.gameState = 1;
@@ -117,9 +115,7 @@ export default {
     try {
       let response = await fetch("https://bamboocolor.herokuapp.com/combination");
       var combiJs = await response.json();
-      console.log("response=", response);
-      var combiObj = JSON.parse(combiJs);
-      this.secret = combiObj.combi
+      this.secret = combiJs.combi;
     } catch (error) {
       console.log(error);
     }
