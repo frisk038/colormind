@@ -116,6 +116,7 @@ export default {
   async beforeMount() {
     try {
       let response = await fetch("https://bamboocolor.herokuapp.com/combination");
+      console.log("response=", response);
       var combiJs = await response.json();
       var combiObj = JSON.parse(combiJs);
       this.secret = combiObj.combi
