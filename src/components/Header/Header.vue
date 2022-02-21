@@ -1,7 +1,7 @@
 <template>
     <table class="headTab">
         <td>
-            <button class="leaderboard" v-on:click="getData" />
+            <button class="leaderboard" />
         </td>
         <td>
             <img src="../assets/panda1.png" class="logo" />
@@ -11,7 +11,6 @@
         </td>
     </table>
     <HelpPopup v-show="helpNeeded" @closeHelp="closeHelp"></HelpPopup>
-    {{ combi }}
 </template>
 
 <script>
@@ -21,20 +20,11 @@ export default {
     data() {
         return {
             helpNeeded: true,
-            combi: ""
         }
     },
     methods: {
         closeHelp() {
             this.helpNeeded = false
-        },
-        async getData() {
-            try {
-                let response = await fetch("https://bamboocolor.herokuapp.com/combination");
-                this.combi = await response.json();
-            } catch (error) {
-                console.log(error);
-            }
         },
     },
 }

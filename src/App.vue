@@ -55,6 +55,16 @@ export default {
     }
   },
   methods: {
+    async getSecret() {
+      try {
+        let response = await fetch("https://bamboocolor.herokuapp.com/combination");
+        var combiJs = await response.json();
+        var combiObj = JSON.parse(combiJs);
+        this.secret = combiObj.combi
+      } catch (error) {
+        console.log(error);
+      }
+    },
     updateGameArr(curColor) {
       if (this.curCell < 4 && this.gameState == 0) {
         this.gameArr[this.curRow][this.curCell] = curColor
@@ -112,7 +122,7 @@ export default {
     },
   },
   created() {
-    this.secret = getSecret()
+    this.getSecret();
   },
 }
 </script>
