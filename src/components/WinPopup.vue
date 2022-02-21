@@ -49,7 +49,6 @@ export default {
             }
             text += '\nhttps://bambo-color.netlify.app'
             this.copyToClipboard(text)
-            console.log(text)
         },
         async copyToClipboard(mytext) {
             try {
