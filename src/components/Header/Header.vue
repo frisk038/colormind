@@ -1,16 +1,17 @@
 <template>
     <table class="headTab">
         <td>
-            <button class="leaderboard" v-on:click="helpNeeded = !helpNeeded" />
+            <button class="leaderboard" v-on:click="getData" />
         </td>
         <td>
             <img src="../assets/panda1.png" class="logo" />
         </td>
         <td>
-            <button class="help" />
+            <button class="help" v-on:click="helpNeeded = !helpNeeded" />
         </td>
     </table>
     <HelpPopup v-show="helpNeeded" @closeHelp="closeHelp"></HelpPopup>
+    {{ combi }}
 </template>
 
 <script>
@@ -19,14 +20,22 @@ export default {
     components: { HelpPopup },
     data() {
         return {
-            helpNeeded: true
+            helpNeeded: true,
+            combi: ""
         }
     },
     methods: {
         closeHelp() {
-            console
             this.helpNeeded = false
-        }
+        },
+        async getData() {
+            try {
+                let response = await fetch("https://bamboocolor.herokuapp.com/combination");
+                this.combi = await response.json();
+            } catch (error) {
+                console.log(error);
+            }
+        },
     },
 }
 </script>
@@ -37,14 +46,14 @@ export default {
 }
 
 .help {
-    background: url("../assets/leaderboard.png") no-repeat;
+    background: url("../assets/help.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
     border-radius: 10px;
 }
 .leaderboard {
-    background: url("../assets/help.png") no-repeat;
+    background: url("../assets/leaderboard.png") no-repeat;
     background-size: cover;
     width: 50px;
     height: 50px;
