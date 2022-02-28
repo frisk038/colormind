@@ -27,15 +27,21 @@ function getSecret() {
 
 function check(gameArr, checkArr, secretArr) {
   var won = 0
+  var tmpSecret = secretArr.slice();
   for (let index = 0; index < gameArr.length; index++) {
-    if (secretArr.includes(gameArr[index])) {
-      checkArr[index] = "orange"
-    }
     if (gameArr[index] == secretArr[index]) {
       checkArr[index] = "green"
+      tmpSecret[index] = "none"
       won++
     }
   }
+
+  for (let index = 0; index < gameArr.length; index++) {
+    if (checkArr[index] != "green" && tmpSecret.includes(gameArr[index])) {
+      checkArr[index] = "orange"
+    }
+  }
+
   return won == 4
 }
 
