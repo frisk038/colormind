@@ -19,25 +19,25 @@ export default {
     getImages(color) {
       switch (color) {
         case 'white':
-          const whiteUrl = new URL('../assets/white-circle.svg', import.meta.url)
+          const whiteUrl = new URL('../assets/white-circle.png', import.meta.url)
           return whiteUrl;
         case 'black':
-          const blackUrl = new URL('../assets/black-circle.svg', import.meta.url)
+          const blackUrl = new URL('../assets/black-circle.png', import.meta.url)
           return blackUrl
         case 'green':
-          const greenUrl = new URL('../assets/green-circle.svg', import.meta.url)
+          const greenUrl = new URL('../assets/green-circle.png', import.meta.url)
           return greenUrl
         case 'brown':
-          const brownUrl = new URL('../assets/brown-circle.svg', import.meta.url)
+          const brownUrl = new URL('../assets/brown-circle.png', import.meta.url)
           return brownUrl
         case 'yellow':
-          const yellowUrl = new URL('../assets/yellow-circle.svg', import.meta.url)
+          const yellowUrl = new URL('../assets/yellow-circle.png', import.meta.url)
           return yellowUrl
         case 'red':
-          const orangeUrl = new URL('../assets/red-circle.svg', import.meta.url)
+          const orangeUrl = new URL('../assets/red-circle.png', import.meta.url)
           return orangeUrl
         case 'purple':
-          const purpleUrl = new URL('../assets/purple-circle.svg', import.meta.url)
+          const purpleUrl = new URL('../assets/purple-circle.png', import.meta.url)
           return purpleUrl
       }
     }
